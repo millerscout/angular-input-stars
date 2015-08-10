@@ -23,7 +23,7 @@ Inject it
 
 You can customize the **full**, **empty** and **base** icon classes via attributes
 ```html
-	<input-stars max="5" icon-full="fa-circle" icon-base="fa fa-fw" icon-empty="fa-circle-o" ng-model="YourCtrl.property"></input-stars>
+	<input-stars max="5" icon-full="'fa-circle'" icon-base="fa fa-fw" icon-empty="fa-circle-o" ng-model="YourCtrl.property"></input-stars>
 ```
 > Unlike icon-base, on icon-full and icon-empty you must specify only one class, but that is all you need : ]
 

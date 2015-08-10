@@ -12,7 +12,15 @@ angular.module('angular-input-stars', [])
             '</li>' +
             '</ul>',
             require: 'ngModel',
-            scope: true,
+            scope: {
+                iconFull: '=',
+                isreadonly: '=',
+                callback: '=',
+                iconFull: '=',
+                iconBase: '=',
+                iconEmpty: '=',
+                idModel: '='
+            },
 
             link: link
 
@@ -23,12 +31,11 @@ angular.module('angular-input-stars', [])
         function link(scope, element, attrs, ngModelCtrl) {
 
             scope.items = new Array(+attrs.max);
-
             var emptyIcon = attrs.iconEmpty || 'fa-star-o';
-            var fullIcon = attrs.iconFull || 'fa-star';
-            var iconBase = attrs.iconBase || 'fa fa-fw';
+            var fullIcon = scope.iconFull || 'fa-star';
+            var iconBase = scope.iconBase || 'fa fa-fw';
             scope.listClass = attrs.listClass || 'angular-input-stars';
-            scope.readonly = (attrs.isreadonly === undefined) ? !(attrs.isreadonly === undefined) : attrs.isreadonly=="true"
+            scope.readonly = (typeof scope.isreadonly === 'undefined') ? true : scope.isreadonly;
 
             ngModelCtrl.$render = function () {
 
@@ -61,7 +68,7 @@ angular.module('angular-input-stars', [])
                     var $star = angular.element(items[index]);
 
                     if ($index >= index) {
-                        
+
                         $star.removeClass(emptyIcon);
                         $star.addClass(fullIcon);
                         $star.addClass('active');
@@ -76,6 +83,7 @@ angular.module('angular-input-stars', [])
                 }
 
             };
+
 
             scope.setValue = function (index, e) {
 
@@ -92,6 +100,10 @@ angular.module('angular-input-stars', [])
                 }
 
                 ngModelCtrl.$setViewValue(scope.last_value);
+
+                if (scope.callback)
+                    scope.callback({ id: scope.idModel, value: scope.last_value });
+
 
             };
 

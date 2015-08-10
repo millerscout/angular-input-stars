@@ -34,10 +34,18 @@ You can customize the **list class** to whatever you want
 
 You can make it readonly thanks to [@anjorinjnr](https://github.com/anjorinjnr)
 ```html
-	<input-stars max="10" list-class="shiny-list" ng-model="YourCtrl.property" readonly ></input-stars>
-	<input-stars max="10" list-class="shiny-list" ng-model="YourCtrl.property" readonly="true" ></input-stars>
-	<input-stars max="10" list-class="shiny-list" ng-model="YourCtrl.property" readonly="readonly" ></input-stars>
+	<input-stars max="10" list-class="shiny-list" ng-model="YourCtrl.property" isreadonly="false" ></input-stars>
+	<input-stars max="10" list-class="shiny-list" ng-model="YourCtrl.property" isreadonly="true" ></input-stars>
+	<input-stars max="10" list-class="shiny-list" ng-model="YourCtrl.property" readonly="" ></input-stars>
 ```
+
+It's possible to set a callback [@millerscout](https://github.com/millerscout)
+```html
+<input-stars max="5" icon-full="'mdi-action-star-rate amber-text'" icon-base="mdi-action-star-rate" icon-empty="mdi-action-star-rate" ng-model="display.rating"></input-stars>
+	
+<input-stars max="5" icon-full="'mdi-action-star-rate amber-text'" icon-base="mdi-action-star-rate" icon-empty="mdi-action-star-rate" ng-model="model.rating" callback="model.changeRating" id-model="model.id"></input-stars>
+```
+
 
 > The .css file is optional and it is a bootstrap for customizations.
 

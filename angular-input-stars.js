@@ -15,11 +15,9 @@ angular.module('angular-input-stars', [])
             scope: {
                 iconFull: '=',
                 isreadonly: '=',
-                callback: '=',
                 iconFull: '=',
                 iconBase: '=',
                 iconEmpty: '=',
-                idModel: '='
             },
 
             link: link
@@ -100,11 +98,6 @@ angular.module('angular-input-stars', [])
                 }
 
                 ngModelCtrl.$setViewValue(scope.last_value);
-
-                if (scope.callback)
-                    scope.callback({ id: scope.idModel, value: scope.last_value });
-
-
             };
 
         }
